@@ -8,12 +8,17 @@ Using Virtual Learning Environment (VLE) Data
 This project shows how simple digital behavior markers in a Virtual Learning Environment can be turned into an early-warning system for student success.  
 The analysis is based on 32,044 student–module records with detailed clickstream, registration, and outcome data.
 
+---
+
 ## Key questions
 
 1. How is VLE engagement related to final academic results?  
 2. Is consistency (Days Active) more predictive than raw intensity (Total Clicks)?  
 3. Can we define a clear tipping point where non-engagement becomes dangerous?  
 4. Are there equity gaps in digital effort by socioeconomic status (IMD)?
+
+
+---
 
 ## Engagement and academic results
 
@@ -34,6 +39,8 @@ Students who achieve a Distinction interact with the VLE almost four times as mu
 
 This pattern creates a clear “ladder of success” from Withdrawn to Distinction.
 
+---
+
 ## Consistency vs intensity
 
 The next visual summarizes the correlation structure.
@@ -50,6 +57,8 @@ When both variables are entered into a model, the standardized coefficients look
 Days Active has a strong positive coefficient.  
 Total Clicks becomes slightly negative once consistency is accounted for, capturing the “cramming penalty.”
 
+---
+
 ## The survival tipping point
 
 A logistic regression model was used to classify students into “Success” vs “At-Risk”.  
@@ -62,6 +71,8 @@ The probability curve below shows how passing probability climbs with consistenc
 
 Students who have not reached 33 active days by the mid-point of a module are in a high-risk zone.
 
+---
+
 ## Digital effort gap by socioeconomic status (IMD)
 
 Engagement was also examined by Index of Multiple Deprivation (IMD) bands.
@@ -71,6 +82,8 @@ Engagement was also examined by Index of Multiple Deprivation (IMD) bands.
 Students in the least deprived areas average about 2,465 clicks.  
 Students in the most deprived areas average about 2,192 clicks, a 12.5% effort gap that points to possible digital friction for lower-income students.
 
+---
+
 ## Leadership implications
 
 From a vice-provost or student-success lens, this project supports three practical moves:
@@ -79,12 +92,16 @@ From a vice-provost or student-success lens, this project supports three practic
 - Design nudges, dashboards, and advisor workflows around consistency rather than raw click volume.  
 - Target digital equity interventions to close the IMD effort gap.
 
+---
+
 ## Repository and data
 
 All data, code skeletons, and reports are available in this GitHub repository.
 
 - Raw data: `data/raw/`  
 - Figures and executive summary: `reports/`
+
+---
 
 ## Contact & Links
 
