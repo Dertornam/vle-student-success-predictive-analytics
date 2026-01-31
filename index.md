@@ -86,15 +86,52 @@ All data, code skeletons, and reports are available in this GitHub repository.
 - Raw data: `data/raw/`  
 - Figures and executive summary: `reports/`
 
-## Contact & links
+## Contact
 
+<div class="contact-links">
+   <a class="port-btn"
+     href="https://www.linkedin.com/in/derrick-dzormeku-mba-75288644"
+     target="_blank" rel="noopener">
+    LinkedIn
+  </a>
+   
+   <a class="port-btn"
+     href="https://mail.google.com/mail/?view=cm&fs=1&to=d.double76@icloud.com&su=Portfolio%20inquiry%20%E2%80%93%20Derrick%20Dzormeku&body=Hi%20Derrick,%0D%0A%0D%0AI%27m%20reaching%20out%20about%20your%20analytics%20portfolio.%20Could%20we%20schedule%20a%20brief%20call%3F"
+     target="_blank" rel="noopener">
+    Email via Gmail
+  </a>
 
-<a class="port-btn" href="https://www.linkedin.com/in/derrick-dzormeku-mba-75288644" target="_blank" rel="noopener">LinkedIn</a>
-<a class="port-btn"
-   href="https://mail.google.com/mail/?view=cm&fs=1&to=d.double76@icloud.com&su=Portfolio%20inquiry%20%E2%80%93%20Derrick%20Dzormeku&body=Hi%20Derrick,%0D%0A%0D%0AI%27m%20reaching%20out%20about%20your%20analytics%20portfolio.%20Could%20we%20schedule%20a%20brief%20call%3F"
-   target="_blank" rel="noopener">
-  Email</a>
-<a class="port-btn" href="{{ site.github.repository_url }}">GitHub Repo</a>
+  <a class="port-btn"
+     href="https://dertornam.github.io/higher-ed-analytics-portfolio/"
+     target="_blank" rel="noopener">
+    Main portfolio
+  </a>
+</div>
+
+<style>
+.contact-links {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.port-btn {
+  display: inline-block;
+  background: #0066cc;
+  color: #ffffff !important;
+  padding: 0.75rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.port-btn:hover {
+  background: #0053a6;
+}
+</style>
 
 
 This project is designed as a portfolio example of how predictive analytics, institutional research, and student-success strategy can be integrated.
