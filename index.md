@@ -86,7 +86,7 @@ All data, code skeletons, and reports are available in this GitHub repository.
 - Raw data: `data/raw/`  
 - Figures and executive summary: `reports/`
 
-## Contact
+## Contact & Links
 
 <div class="contact-links">
    <a class="port-btn"
@@ -104,7 +104,7 @@ All data, code skeletons, and reports are available in this GitHub repository.
   <a class="port-btn"
      href="https://dertornam.github.io/higher-ed-analytics-portfolio/"
      target="_blank" rel="noopener">
-    Main portfolio
+    Main Portfolio
   </a>
 </div>
 
