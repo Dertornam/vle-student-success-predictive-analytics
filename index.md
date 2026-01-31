@@ -10,6 +10,12 @@ The analysis is based on 32,044 student–module records with detailed clickstre
 
 ---
 
+## What I did in this project
+
+I designed and executed this analysis end to end: preparing data from the raw Open University VLE tables, engineering engagement features such as total clicks and days active, fitting predictive models in Python, and then turning the results into visuals and recommendations that a vice provost or student-success team could act on.
+
+---
+
 ## Key questions
 
 1. How is VLE engagement related to final academic results?  
@@ -91,6 +97,18 @@ From a vice-provost or student-success lens, this project supports three practic
 - Use Days Active and the ~33-day threshold as hard early-warning metrics.  
 - Design nudges, dashboards, and advisor workflows around consistency rather than raw click volume.  
 - Target digital equity interventions to close the IMD effort gap.
+
+---
+
+## So what for the institution?
+
+Put into production, this framework would let a university surface most at-risk students before mid-module instead of discovering problems only at the end of term. Advisors could manage their outreach around a clear engagement threshold, and leadership could monitor digital-effort gaps by IMD as a concrete equity metric. In practice, that means fewer surprise failures, more timely outreach, and better evidence to justify investments in advising and digital support.
+
+---
+
+## Methods and tech stack
+
+The analysis uses Python (pandas, NumPy, scikit-learn, matplotlib) in Jupyter notebooks. Methods include data cleaning and feature engineering from raw VLE tables, descriptive statistics, correlation analysis, logistic regression for “success vs at-risk” classification, and simple decision-tree logic to identify the 33-day tipping point.
 
 ---
 
