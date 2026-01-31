@@ -93,7 +93,7 @@ All data, code skeletons, and reports are available in this GitHub repository.
 <a class="port-btn"
    href="https://mail.google.com/mail/?view=cm&fs=1&to=d.double76@icloud.com&su=Portfolio%20inquiry%20%E2%80%93%20Derrick%20Dzormeku&body=Hi%20Derrick,%0D%0A%0D%0AI%27m%20reaching%20out%20about%20your%20analytics%20portfolio.%20Could%20we%20schedule%20a%20brief%20call%3F"
    target="_blank" rel="noopener">
-  Email via Gmail</a>
+  Email</a>
 <a class="port-btn" href="{{ site.github.repository_url }}">GitHub Repo</a>
 
 
