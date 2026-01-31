@@ -1,47 +1,13 @@
-# Site identity
 title: Predictive Analytics for Student Success
 description: VLE-based early warning analytics for student retention.
 author: "Derrick Dzormeku"
-logo: /hcz-jekyll-blog/static/img/avatar.png  # change later to your own logo path
 
-# Profile / links
-github: https://github.com/dertornam
-about: "Higher-ed data analyst | Predictive analytics & student success"
+theme: jekyll-theme-cayman
 
-# GitHub Pages URLs
-# For a project site: https://dertornam.github.io/vle-student-success-predictive-analytics/
 baseurl: "/vle-student-success-predictive-analytics"
 url: "https://dertornam.github.io"
 
-# Theme to use (HCZ Material as remote theme)
-remote_theme: codeasashu/hcz-jekyll-blog
-
-# Features
-allowsearch: true
-
-# Comments / analytics (turn off for now – you can fill later)
-disqus_shortname:
-google_analytics:
-
-# Social share config
-share:
-  twitter_username: ""
-  fb_appid: ""
-
-# Tags / blog behavior
-enableTags: true
-tagarray: []
-
-# Pagination
-paginate: 20
-per_page: 20
-paginate_path: "/page:num/"
-
-# Markdown and plugins
-markdown: kramdown
-
-# GitHub Pages uses `plugins` instead of `gems`
+# Optional plugins (these are safe with Cayman)
 plugins:
   - jekyll-paginate
   - jekyll-gist
-  - jekyll-remote-theme
