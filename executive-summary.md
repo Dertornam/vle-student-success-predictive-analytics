@@ -1,6 +1,7 @@
 ---
-title: Executive Summary — Predictive Analytics for Student Success
+title: Executive Summary
 layout: default
+permalink: /executive-summary/
 ---
 
 # Executive Summary — Predictive Analytics for Student Success  
