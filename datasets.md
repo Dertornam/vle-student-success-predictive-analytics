@@ -1,6 +1,7 @@
 ---
-title: Datasets — Predictive Analytics for Student Success
+title: Datasets
 layout: default
+permalink: /datasets/
 ---
 
 # Datasets — Predictive Analytics for Student Success  
