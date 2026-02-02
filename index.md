@@ -22,12 +22,11 @@ layout: default
 </style>
 
 <div style="margin: 1rem 0;">
-  <a class="port-btn" href="{{ '/executive-summary-student-success' | relative_url }}">Executive Summary</a>
-  <a class="port-btn" href="{{ '/statistical-tables-student-success' | relative_url }}">Statistical Tables</a>
-  <a class="port-btn" href="{{ '/datasets-student-success' | relative_url }}">Datasets</a>
-  <a class="port-btn" href="{{ '/feature-engineering-student-success' | relative_url }}">Feature Engineering</a>
-  <a class="port-btn" href="{{ '/data-dictionary-student-success' | relative_url }}">Data Dictionary</a>
-  <a class="port-btn" href="{{ '/reproducibility-student-success' | relative_url }}">Reproducibility</a>
+  <a class="port-btn" href="{{ '/executive-summary' | relative_url }}">Executive Summary</a>
+  <a class="port-btn" href="{{ '/statistical-tables' | relative_url }}">Statistical Tables</a>
+  <a class="port-btn" href="{{ '/datasets' | relative_url }}">Datasets</a>
+  <a class="port-btn" href="{{ '/data-dictionary' | relative_url }}">Data Dictionary</a>
+  <a class="port-btn" href="{{ '/reproducibility' | relative_url }}">Reproducibility</a>
 </div>
 
 <style>
