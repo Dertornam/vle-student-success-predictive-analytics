@@ -1,6 +1,7 @@
 ---
-title: Data Dictionary — Predictive Analytics for Student Success
+title: Data Dictionary
 layout: default
+permalink: /data-dictionary/
 ---
 
 # Data Dictionary — Predictive Analytics for Student Success  
