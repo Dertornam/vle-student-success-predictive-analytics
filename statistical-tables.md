@@ -1,6 +1,7 @@
 ---
-title: Statistical Tables — Predictive Analytics for Student Success
+title: Statistical Tables
 layout: default
+permalink: /statistical-tables/
 ---
 
 # Statistical Tables — Predictive Analytics for Student Success  
