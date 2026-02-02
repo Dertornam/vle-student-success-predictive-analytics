@@ -144,7 +144,7 @@ That is why this threshold works as an early-warning trigger. It signals “rout
      href="https://dertornam.github.io/higher-ed-analytics-portfolio/"
      target="_blank" rel="noopener">
     Other Portfolios
-  </a>
+  </a> 
   <a class="port-btn" href="{{ '/resume.pdf' | relative_url }}">View Resume</a>
 </div>
 
