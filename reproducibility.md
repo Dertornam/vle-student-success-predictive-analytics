@@ -1,6 +1,7 @@
 ---
-title: Reproducibility — Predictive Analytics for Student Success
+title: Reproducibility
 layout: default
+permalink: /reproducibility/
 ---
 
 # Reproducibility — Predictive Analytics for Student Success  
