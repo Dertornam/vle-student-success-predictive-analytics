@@ -1,41 +1,129 @@
 ---
 title: Predictive Analytics for Student Success
+layout: default
 ---
 
 # Predictive Analytics for Student Success  
 Using Virtual Learning Environment (VLE) Data
 
-This project shows how simple digital behavior markers in a Virtual Learning Environment can be turned into an early-warning system for student success.  
-The analysis is based on 32,044 student–module records with detailed clickstream, registration, and outcome data.
+**Tools:** Python (pandas, NumPy, scikit-learn, matplotlib), Jupyter Notebook
+
+<style>
+.port-btn{
+  display:inline-block;
+  padding:.6rem 1rem;
+  margin:.25rem .4rem 0 0;
+  border-radius:8px;
+  background:#0366d6;
+  color:#fff !important;
+  text-decoration:none !important;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+  font-weight:600;
+}
+.port-btn:hover{ filter:brightness(0.95); }
+</style>
+
+<div style="margin: 1rem 0;">
+  <a class="port-btn" href="{{ '/executive-summary-student-success' | relative_url }}">Executive Summary</a>
+  <a class="port-btn" href="{{ '/statistical-tables-student-success' | relative_url }}">Statistical Tables</a>
+  <a class="port-btn" href="{{ '/datasets-student-success' | relative_url }}">Datasets</a>
+  <a class="port-btn" href="{{ '/data-dictionary-student-success' | relative_url }}">Data Dictionary</a>
+  <a class="port-btn" href="{{ '/reproducibility-student-success' | relative_url }}">Reproducibility</a>
+</div>
+
+<style>
+.page-content img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  margin: .5rem 0 1rem 0;
+}
+</style>
 
 ---
 
-## What I did in this project
+## Introduction & Project Objective
+I built a practical early-warning framework using VLE engagement behavior.  
+The goal was to detect risk early enough for advising and course teams to act.
 
-I designed and executed this analysis end to end: preparing data from the raw Open University VLE tables, engineering engagement features such as total clicks and days active, fitting predictive models in Python, and then turning the results into visuals and recommendations that a vice provost or student-success team could act on.
+This project uses 32,044 student–module records.  
+It includes clickstream traces, registration context, and academic outcomes.
+
+The “So what?” is operational.  
+If we can quantify “showing up,” we can trigger outreach before grades collapse.
 
 ---
 
-## Key questions
+## What I built end-to-end
+I started from raw Open University VLE tables.  
+I cleaned and joined them into an analysis-ready student–module file.
 
+I engineered engagement markers like Total Clicks and Days Active.  
+I then modeled “Success vs At-Risk” and translated results into thresholds and workflows.
+
+I treated this as an institutional analytics deliverable.  
+Not just a notebook.
+
+---
+
+## Key questions this analysis answers
 1. How is VLE engagement related to final academic results?  
 2. Is consistency (Days Active) more predictive than raw intensity (Total Clicks)?  
-3. Can we define a clear tipping point where non-engagement becomes dangerous?  
-4. Are there equity gaps in digital effort by socioeconomic status (IMD)?
-
+3. Is there a clear tipping point where non-engagement becomes dangerous?  
+4. Are there digital-effort gaps by socioeconomic context (IMD)?
 
 ---
 
-## Engagement and academic results
+## Data & outcome definition
+Unit of analysis is student–module.  
+Each row represents one student in one module presentation.
 
-The figure below shows how total VLE clicks increase as final results improve.
+The academic outcome is the final result category.  
+For modeling, I collapsed outcomes into “Success” vs “At-Risk.”
 
-![VLE Engagement vs Final Academic Result](reports/figures/vle_engagement_vs_final_result_boxplot.png)
+“Success” means the student passes.  
+“At-Risk” means fail or withdraw.
 
-Students who achieve a Distinction interact with the VLE almost four times as much as students who fail or withdraw.
+This framing matches how student-success teams work.  
+They intervene before the final outcome is locked in.
 
-**Table: Mean engagement by final result**
+---
 
+## Methodology
+**Data engineering.**  
+I aggregated click events to student–module totals and daily activity counts.
+
+**Feature engineering.**  
+Total Clicks captures volume.  
+Days Active captures consistency of participation.
+
+**Exploratory analysis.**  
+I compared engagement distributions by outcome.  
+I quantified relationships using correlations and group summaries.
+
+**Predictive modeling.**  
+I fit logistic regression for interpretability.  
+I added a simple tree-based split to surface a usable threshold.
+
+**Evaluation.**  
+I prioritized recall for the at-risk group.  
+That reflects outreach goals.
+
+---
+
+## Key finding 1: Engagement forms a “ladder of success”
+Total VLE clicks rise steadily as final results improve.  
+This produces a clean behavioral gradient from Withdrawn to Distinction.
+
+### Visual: VLE engagement by final result
+![VLE Engagement vs Final Academic Result]({{ '/reports/figures/vle_engagement_vs_final_result_boxplot.png' | relative_url }})
+
+Students who achieve a Distinction interact far more than students who fail or withdraw.  
+This is the behavioral signal an early-warning model can exploit.
+
+### Table: Mean engagement by final result
 | Final Result | Mean Clicks | Median Clicks | Std. Deviation |
 |--------------|------------:|--------------:|----------------:|
 | Distinction  | 3,106.43    | 2,218.0       | 2,978.98        |
@@ -43,104 +131,171 @@ Students who achieve a Distinction interact with the VLE almost four times as mu
 | Fail         |   840.17    |   418.5       | 1,260.85        |
 | Withdrawn    |   888.38    |   364.0       | 1,468.34        |
 
-This pattern creates a clear “ladder of success” from Withdrawn to Distinction.
+The practical meaning is simple.  
+Engagement is not just “nice to have.”  
+It is an observable precursor to academic outcomes.
 
 ---
 
-## Consistency vs intensity
+## Key finding 2: Consistency beats intensity
+Days Active correlates more strongly with outcome than Total Clicks.  
+Showing up across more days matters more than bursts of activity.
 
-The next visual summarizes the correlation structure.
+### Visual: Correlation structure
+![Correlation Matrix]({{ '/reports/figures/correlation_heatmap_engagement_vs_outcome.png' | relative_url }})
 
-![Correlation Matrix](reports/figures/correlation_heatmap_engagement_vs_outcome.png)
+In this dataset, Days Active relates more strongly to the Result Score (r = 0.55).  
+Total Clicks is weaker (r = 0.35).
 
-Days Active has a stronger relationship with the Result Score (r = 0.55) than Total Clicks (r = 0.35).  
-Showing up on more days matters more than doing a large number of clicks in a few bursts.
+That reads like a gym analogy.  
+Going three times a week beats one intense day a month.
 
-When both variables are entered into a model, the standardized coefficients look like this:
+### Visual: Standardized coefficients in a joint model
+![Predictive Power: Consistency vs Volume]({{ '/reports/figures/predictive_power_consistency_vs_volume.png' | relative_url }})
 
-![Predictive Power: Consistency vs Volume](reports/figures/predictive_power_consistency_vs_volume.png)
+Days Active stays strongly positive when both features enter the model.  
+Total Clicks turns slightly negative once consistency is accounted for.
 
-Days Active has a strong positive coefficient.  
-Total Clicks becomes slightly negative once consistency is accounted for, capturing the “cramming penalty.”
-
----
-
-## The survival tipping point
-
-A logistic regression model was used to classify students into “Success” vs “At-Risk”.  
-The model reaches about 74% accuracy and 77% recall for the at-risk group.
-
-A simple decision-tree view finds a tipping point at about 32.5 active days.  
-The probability curve below shows how passing probability climbs with consistency.
-
-![Probability of Success vs Days Active](reports/figures/probability_of_success_vs_days_active.png)
-
-Students who have not reached 33 active days by the mid-point of a module are in a high-risk zone.
+This is the “cramming penalty.”  
+A lot of clicks in a few late bursts can signal distress, not strength.
 
 ---
 
-## Digital effort gap by socioeconomic status (IMD)
+## Key finding 3: The tipping point is operationally usable
+I trained a logistic regression to classify “Success” vs “At-Risk.”  
+The model achieves about 74% accuracy and about 77% recall for the at-risk group.
 
-Engagement was also examined by Index of Multiple Deprivation (IMD) bands.
+A simple decision split identifies a threshold around 32.5 active days.  
+This gives leadership a concrete metric, not an abstract score.
 
-![Digital Effort Gap](reports/figures/digital_effort_gap_by_imd.png)
+### Visual: Probability of success vs Days Active
+![Probability of Success vs Days Active]({{ '/reports/figures/probability_of_success_vs_days_active.png' | relative_url }})
 
-Students in the least deprived areas average about 2,465 clicks.  
-Students in the most deprived areas average about 2,192 clicks, a 12.5% effort gap that points to possible digital friction for lower-income students.
+If a student has not reached ~33 active days by mid-module, risk is elevated.  
+This is where proactive outreach pays off.
+
+Think of it like a smoke alarm.  
+You want the alarm before the fire spreads.
+
+---
+
+## Key finding 4: Digital effort gap by socioeconomic status (IMD)
+I examined engagement by Index of Multiple Deprivation (IMD) band.  
+The least deprived group shows higher average engagement.
+
+### Visual: Digital effort by IMD band
+![Digital Effort Gap]({{ '/reports/figures/digital_effort_gap_by_imd.png' | relative_url }})
+
+Least deprived students average about 2,465 clicks.  
+Most deprived students average about 2,192 clicks.
+
+That is a 12.5% effort gap.  
+It suggests digital friction that may be outside academic ability.
+
+This is not a “blame the student” story.  
+It is a “remove barriers” story.
+
+---
+
+## Dataset profile & data quality notes
+The analytic file contains 32,044 student–module records.  
+Each record is aggregated from raw clickstream events.
+
+Engagement measures are heavy-tailed.  
+That is why medians matter as much as means.
+
+Outcome categories include Distinction, Pass, Fail, and Withdrawn.  
+For the risk model, Fail and Withdrawn are treated as “At-Risk.”
+
+If missingness exists in activity logs, it is meaningful.  
+It often represents non-participation rather than random gaps.
+
+---
+
+## Diagnostics & robustness checks
+Engagement is not normally distributed.  
+It clusters near zero with a long right tail.
+
+That makes effect sizes easier to interpret with robust thinking.  
+The main conclusions hold because they rely on strong separation patterns and consistency signals.
+
+Total Clicks becoming slightly negative in the joint model is interpretable.  
+It reflects time-pattern effects that “Days Active” captures better.
+
+This is why Days Active is the better policy metric.  
+It is also harder to game.
 
 ---
 
 ## Leadership implications
+This project supports three institutional moves.  
+Each one is easy to implement if you already have LMS logs.
 
-From a vice-provost or student-success lens, this project supports three practical moves:
+1) Use Days Active as the primary early-warning metric.  
+Treat ~33 days by mid-module as a high-risk flag.
 
-- Use Days Active and the ~33-day threshold as hard early-warning metrics.  
-- Design nudges, dashboards, and advisor workflows around consistency rather than raw click volume.  
-- Target digital equity interventions to close the IMD effort gap.
+2) Build interventions around consistency, not volume.  
+Design nudges that increase “days present,” not “click count.”
+
+3) Track digital-effort gaps by IMD as an operational equity signal.  
+Use it to justify investments in device access, connectivity, and learning support.
 
 ---
 
-## So what for the institution?
+## “So what?” for the institution
+This framework surfaces risk before mid-module.  
+That shifts the institution from reactive to preventive.
 
-Put into production, this framework would let a university surface most at-risk students before mid-module instead of discovering problems only at the end of term. Advisors could manage their outreach around a clear engagement threshold, and leadership could monitor digital-effort gaps by IMD as a concrete equity metric. In practice, that means fewer surprise failures, more timely outreach, and better evidence to justify investments in advising and digital support.
+Advisors can triage outreach using a simple behavioral threshold.  
+Leadership can track risk rates and IMD engagement gaps as leading indicators.
+
+In practice, fewer failures feel “sudden.”  
+More support lands while students can still recover.
 
 ---
 
 ## Methods and tech stack
+I used Python in Jupyter notebooks.  
+Core libraries were pandas, NumPy, scikit-learn, and matplotlib.
 
-The analysis uses Python (pandas, NumPy, scikit-learn, matplotlib) in Jupyter notebooks. Methods include data cleaning and feature engineering from raw VLE tables, descriptive statistics, correlation analysis, logistic regression for “success vs at-risk” classification, and simple decision-tree logic to identify the 33-day tipping point.
+Methods include cleaning and feature engineering from raw VLE tables.  
+I used descriptive statistics, correlation analysis, logistic regression, and a simple thresholding tree.
+
+The modeling choice is deliberate.  
+Interpretability matters for institutional adoption.
 
 ---
 
-## Repository and data
+## Repository and outputs
+All code skeletons, figures, and reports live in this repository.  
+Figures and the executive summary are under `reports/`.
 
-All data, code skeletons, and reports are available in this GitHub repository.
-
-- Raw data: `data/raw/`  
-- Figures and executive summary: `reports/`
+Raw or source-like data assets live under `data/raw/`.  
+Cleaned and modeled extracts can live under `data/processed/`.
 
 ---
 
 ## Contact & Links
-
 <div class="contact-links">
    <a class="port-btn"
      href="https://www.linkedin.com/in/derrick-dzormeku-mba-75288644"
      target="_blank" rel="noopener">
     LinkedIn
   </a>
-   
+
    <a class="port-btn"
      href="https://mail.google.com/mail/?view=cm&fs=1&to=d.double76@icloud.com&su=Portfolio%20inquiry%20%E2%80%93%20Derrick%20Dzormeku&body=Hi%20Derrick,%0D%0A%0D%0AI%27m%20reaching%20out%20about%20your%20analytics%20portfolio.%20Could%20we%20schedule%20a%20brief%20call%3F"
      target="_blank" rel="noopener">
     Email
   </a>
-  
+
   <a class="port-btn"
      href="https://dertornam.github.io/higher-ed-analytics-portfolio/"
      target="_blank" rel="noopener">
     Main Portfolio
   </a>
+
+  <a class="port-btn" href="{{ '/resume.pdf' | relative_url }}">View Resume</a>
 </div>
 
 <style>
@@ -167,6 +322,5 @@ All data, code skeletons, and reports are available in this GitHub repository.
   background: #0053a6;
 }
 </style>
-
 
 This project is designed as a portfolio example of how predictive analytics, institutional research, and student-success strategy can be integrated.
